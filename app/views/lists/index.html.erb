@@ -1,0 +1,9 @@
+<h1>My Lists</h1>
+
+<% @lists.each do |list| %>
+  <h2> <%= link_to list.name, list_path(list) %> <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do %>
+            <i class="fa-regular fa-trash-can"></i>
+            <% end %></li></h2>
+<% end %>
+
+<%= link_to "Create new list", new_list_path %>
