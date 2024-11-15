@@ -1,8 +1,11 @@
-<%= simple_form_for(list) do |f| %>
- <div class="mb-3">
-    <%= f.input :name %>
-  </div>
-  <div class="mb-3">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  </div>
-<% end %>
+<div class="form-container">
+  <h2 class="form-title">Create Your List</h2>
+  <%= simple_form_for(list, html: { class: "styled-form" }) do |f| %>
+    <div class="form-group">
+      <%= f.input :name, label: "List Name", input_html: { class: "form-input" }, label_html: { class: "form-label" } %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Submit", class: "btn btn-submit" %>
+    </div>
+  <% end %>
+</div>

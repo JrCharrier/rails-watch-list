@@ -1,9 +1,27 @@
-<h1>My Lists</h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.freepik.com/vecteurs-libre/signe-au-neon-temps-film-seau-pop-corn-clap-film-affiche_1262-13530.jpg?t=st=1731670914~exp=1731674514~hmac=82a22c43c61473614958dd7c4dad90bc9fbf8328cb4e3ff8675079e44fd961e5&w=1380)">
+  <h3>Save any kind of movies</h3>
+</div>
+<div class="container my-5">
+  <h1>My Lists</h1>
+  <div class="row justify-content-center">
+    <% @lists.each do |list| %>
+      <div class="col-md-4 col-lg-3 mb-4">
+        <div class="card img-bckgrd me-20" style="background-image: url('https://img.freepik.com/vecteurs-libre/heure-du-film_24908-55566.jpg?t=st=1731671248~exp=1731674848~hmac=4189fe1c5fcbc1107387fe223cff5b2ae9389bad6890f2c6274b874a1b839297&w=740');">
+          <div class="card-overlay">
+            <h5 class="card-title">
+              <%= link_to list.name, list_path(list), class: "text-white text-decoration-none" %>
+            </h5>
 
-<% @lists.each do |list| %>
-  <h2> <%= link_to list.name, list_path(list) %> <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do %>
-            <i class="fa-regular fa-trash-can"></i>
-            <% end %></li></h2>
-<% end %>
+            <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-link btn-delete btn-sm" do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to "Create new list", new_list_path %>
+  <div class="text-center mt-5">
+    <%= link_to "Create New List", new_list_path, class: "create-btn" %>
+  </div>
+</div>

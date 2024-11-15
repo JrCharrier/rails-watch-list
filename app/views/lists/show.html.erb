@@ -1,17 +1,37 @@
-<h2><%= @list.name %></h2>
+<div class="container">
+  <h2 class="list-title mt-5"><%= @list.name %></h2>
 
-<% @list.movies.each do |movie| %>
-<ul>
-  <%   bookmark = Bookmark.find_by(list: @list, movie: movie)%>
-  <li><%= bookmark.comment %>  <%= link_to "Delete bookmark", bookmark_path(bookmark), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></div></li>
-  <ul>
-    <li><%= image_tag movie.poster_url %></li>
-    <li><%= movie.title %></li>
-    <li><%= movie.overview %></li>
-    <li><%= movie.rating %></li>
-  </ul>
-</ul>
-<% end %>
+  <div class="movie-cards">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <div class="movie-card">
+        <!-- Section du Bookmark -->
+        <div class="movie-card-header">
+          <span class="bookmark-comment">Comment: <%= bookmark.comment %></span>
+          <%= link_to bookmark_path(bookmark), class: "delete-bookmark-btn", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
 
-<%= link_to "Add a bookmark",  new_list_bookmark_path(@list) %>
-<%= link_to "Back", lists_path %>
+        <!-- Affichage de l'image du film -->
+        <div class="movie-card-poster">
+          <%= image_tag movie.poster_url, class: "poster-img" %>
+        </div>
+
+        <!-- Informations sur le film -->
+        <div class="movie-card-details">
+          <h3 class="movie-title"><%= movie.title %></h3>
+          <p class="movie-overview"><%= movie.overview %></p>
+          <div class="movie-extra-info">
+            <span class="movie-rating">⭐ <%= movie.rating %>/10</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions mb-5">
+    <%= link_to "Add a bookmark", new_list_bookmark_path(@list), class: "btn btn-primary btn-add-bookmark" %>
+    <%= link_to "Back", lists_path, class: "btn btn-secondary btn-back" %>
+  </div>
+</div>

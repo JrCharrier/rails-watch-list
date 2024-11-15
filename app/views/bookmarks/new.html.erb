@@ -1,2 +1,11 @@
-<%= render "form", bookmark: @bookmark, list: @list %>
-<%= link_to "Back", list_path(@list) %>
+<div class="form-container">
+  <div class="form-header">
+    <h2>Manage Your Bookmark</h2>
+  </div>
+  <div class="form-body">
+    <%= render "form", bookmark: @bookmark, list: @list %>
+  </div>
+  <div class="form-actions">
+    <%= link_to "Back", list_path(@list), class: "btn btn-back" %>
+  </div>
+</div>
