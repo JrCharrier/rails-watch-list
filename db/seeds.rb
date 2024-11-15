@@ -9,7 +9,7 @@
 #   end
 require "open-uri"
 require "json"
-url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=3&api_key=b3e4ed8ed2bcc7f2900cf7ed578deba8"
+url = "https://api.themoviedb.org/1/movie/popular?language=en-US&page=1&api_key=b3e4ed8ed2bcc7f2900cf7ed578deba8"
 movie_list = URI.open(url).read
 movies = JSON.parse(movie_list)["results"]
 puts "Creating movies"
