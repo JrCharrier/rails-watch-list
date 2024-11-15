@@ -7,7 +7,7 @@
       <div class="movie-card">
         <!-- Section du Bookmark -->
         <div class="movie-card-header">
-          <span class="bookmark-comment">Comment: <%= bookmark.comment %></span>
+          <span class="bookmark-comment title-chill">Comment: <%= bookmark.comment %></span>
           <%= link_to bookmark_path(bookmark), class: "delete-bookmark-btn", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
             <i class="fa-regular fa-trash-can"></i>
           <% end %>
