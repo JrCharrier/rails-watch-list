@@ -11,3 +11,16 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
+
+.delete-btn {
+  position: absolute; /* Positionne le bouton en fonction de la carte */
+  top: -130px; /* Distance depuis le haut de la carte */
+  right: 0px; /* Distance depuis la droite de la carte */
+  z-index: 10; /* Assurez-vous qu'il est au-dessus des autres éléments */
+  color: white; /* Ajustez la couleur selon le design */
+  text-decoration: none; /* Pas de soulignement pour le lien */
+}
+
+.delete-btn:hover {
+  color: blue; /* Couleur de survol pour plus de visibilité */
+}
